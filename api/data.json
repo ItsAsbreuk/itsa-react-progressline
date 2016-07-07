@@ -1,0 +1,178 @@
+{
+    "project": {
+        "name": "itsa-react-progressline",
+        "description": "React-Component: progressline",
+        "logo": "https://avatars0.githubusercontent.com/u/8314644?v=3&s=84",
+        "version": "0.0.1"
+    },
+    "files": {
+        "lib/component.jsx": {
+            "name": "lib/component.jsx",
+            "modules": {
+                "component.jsx": 1
+            },
+            "classes": {
+                "Component": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "component.jsx": {
+            "name": "component.jsx",
+            "submodules": {},
+            "elements": {},
+            "classes": {
+                "Component": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "lib/component.jsx",
+            "line": 3,
+            "description": "Description here\n\n\n\n<i>Copyright (c) 2016 ItsAsbreuk - http://itsasbreuk.nl</i><br>\nNew BSD License - http://choosealicense.com/licenses/bsd-3-clause/",
+            "since": "15.0.0"
+        }
+    },
+    "classes": {
+        "Component": {
+            "name": "Component",
+            "shortname": "Component",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "component.jsx",
+            "namespace": "",
+            "file": "lib/component.jsx",
+            "line": 3,
+            "description": "Description here\n\n\n\n<i>Copyright (c) 2016 ItsAsbreuk - http://itsasbreuk.nl</i><br>\nNew BSD License - http://choosealicense.com/licenses/bsd-3-clause/"
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "lib/component.jsx",
+            "line": 27,
+            "description": "The class that should be set on the element",
+            "itemtype": "property",
+            "name": "className",
+            "type": "String",
+            "since": "0.0.1",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 36,
+            "description": "The percentage that progressline is filled.",
+            "itemtype": "property",
+            "name": "endMarker",
+            "type": "Boolean",
+            "default": "true",
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 46,
+            "description": "Whether the progressline should end with a gradient.",
+            "itemtype": "property",
+            "name": "endGradient",
+            "type": "Boolean",
+            "default": "true",
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 56,
+            "description": "Whether an endMarker should be drawn.",
+            "itemtype": "property",
+            "name": "endMarker",
+            "type": "Boolean",
+            "default": "true",
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 66,
+            "description": "The markers that are written along the progressline",
+            "itemtype": "property",
+            "name": "markers",
+            "type": "Array",
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 75,
+            "description": "The percentage that a SECOND shaded progressline is filled,\nwhich should go further than `percent`.\nAs from the `percent` the line will continue semi-transparent.",
+            "itemtype": "property",
+            "name": "shadedPercent",
+            "type": "Boolean",
+            "default": "true",
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 87,
+            "description": "Whether the progressline should start with a gradient.\nOnly visible when `startMarker` is false.",
+            "itemtype": "property",
+            "name": "startGradient",
+            "type": "Boolean",
+            "default": "true",
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 98,
+            "description": "Whether a startMarker should be drawn.",
+            "itemtype": "property",
+            "name": "startMarker",
+            "type": "Boolean",
+            "default": "false",
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 141,
+            "description": "Returns the default props.",
+            "itemtype": "method",
+            "name": "getDefaultProps",
+            "return": {
+                "description": "Object"
+            },
+            "since": "0.0.1",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 158,
+            "description": "React render-method --> renderes the Component.",
+            "itemtype": "method",
+            "name": "render",
+            "return": {
+                "description": "ReactComponent"
+            },
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        }
+    ],
+    "warnings": []
+}

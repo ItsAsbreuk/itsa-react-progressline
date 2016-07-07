@@ -1,0 +1,99 @@
+$unchecked-color: #EEE;
+$checked-color: #0078E7;
+$gradient-width: 5em;
+$trans: 0.2;
+$marker-color-trans: #CCE4FB;
+
+.itsa-progressline {
+    position: relative !important;
+    padding-top: 2em;
+}
+
+.itsa-progressline-line-checked.itsa-progressline-line-transparent {
+    opacity: $trans !important;
+    z-index: 1;
+}
+
+.itsa-progressline-line {
+    display: inline-block;
+    height: 0.2em;
+    background-color: $unchecked-color;
+}
+
+.itsa-progressline-line-checked {
+    position: absolute;
+    z-index: 2;
+    height: 0.2em;
+    bottom: 0.25em;
+    overflow: hidden;
+    background-color: $checked-color;
+}
+
+.itsa-progressline-line-startgradient {
+    float: left;
+    height: 100%;
+    width: $gradient-width;
+    background: -moz-linear-gradient(left,  $unchecked-color 0%, $checked-color 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  $unchecked-color 0%, $checked-color 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  $unchecked-color 0%, $checked-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$unchecked-color', endColorstr='$checked-color',GradientType=1 ); /* IE6-9 */
+}
+
+.itsa-progressline-line-endgradient {
+    float: right;
+    height: 100%;
+    width: $gradient-width;
+    background: -moz-linear-gradient(left,  $checked-color 0%, $unchecked-color 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  $checked-color 0%, $unchecked-color 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  $checked-color 0%, $unchecked-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$checked-color', endColorstr='$unchecked-color',GradientType=1 ); /* IE6-9 */
+}
+
+.itsa-progressline-line-backwardsfill {
+    position: absolute;
+    z-index: 4;
+    background-color: $checked-color;
+    height: 100%;
+    width: $gradient-width;
+    left: -$gradient-width;
+    margin-top: 0.4em;
+}
+
+.itsa-progressline-item {
+    bottom: 0;
+    display: inline-block;
+    position: absolute;
+    z-index: 3;
+}
+
+.itsa-progressline-marker {
+    position: absolute;
+    z-index: 3;
+    margin-left: -0.5em;
+    border-radius: 100%;
+    border: solid 0.2em $unchecked-color;
+    background-color: #FFF;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height: 0.8em;
+    width: 0.8em;
+    bottom: 0;
+}
+
+.itsa-progressline-marker.itsa-progressline-checked {
+    background-color: $checked-color;
+    border-color: $checked-color;
+
+    &.itsa-progressline-checked-transparent {
+        border-color: $marker-color-trans;
+        background-color: $marker-color-trans;
+    }
+}
+
+.itsa-progressline-label {
+    margin-top: -2.15em;
+    margin-left: -50%;
+    width: 100%;
+    white-space: nowrap;
+}
