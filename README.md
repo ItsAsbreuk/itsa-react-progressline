@@ -26,3 +26,16 @@ ReactDOM.render(
     document.getElementById("component-container")
 );
 ```
+
+
+## About the css
+
+You need the right css in order to make use of `itsa-react-table`. There are 2 options:
+
+1. You can use the css-files inside the `css`-folder.
+2. You can use: `Component = require("itsa-react-table/lib/component-styled.jsx");` and build your project with `webpack`. This is needed, because you need the right plugin to handle a requirement of the `scss`-file.
+
+
+[View live example](http://projects.itsasbreuk.nl/react-components/itsa-progressline/component.html)
+
+[API](http://projects.itsasbreuk.nl/react-components/itsa-react-progressline/api/)
