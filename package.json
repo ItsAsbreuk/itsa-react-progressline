@@ -1,6 +1,6 @@
 {
     "name": "itsa-react-progressline",
-    "version": "15.0.8",
+    "version": "15.0.9",
     "description": "React Component: progressline with dedicated mark-points",
     "author": [
         {
@@ -51,6 +51,8 @@
         "jshint": "^2.5.5",
         "mocha": "^1.21.4",
         "node-sass": "^3.4.2",
+        "react": "^15.0.1",
+        "react-dom": "^15.0.1",
         "react-addons-test-utils": "^15.0.1",
         "sass-loader": "^3.1.2",
         "style-loader": "^0.13.0",
