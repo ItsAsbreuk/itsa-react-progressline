@@ -169,7 +169,6 @@
 	'use strict';
 
 	// shim for using process in browser
-
 	var process = module.exports = {};
 
 	// cached from whatever global is present so that test runners that stub it
@@ -180,22 +179,79 @@
 	var cachedSetTimeout;
 	var cachedClearTimeout;
 
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout() {
+	    throw new Error('clearTimeout has not been defined');
+	}
 	(function () {
 	    try {
-	        cachedSetTimeout = setTimeout;
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
+	        }
 	    } catch (e) {
-	        cachedSetTimeout = function cachedSetTimeout() {
-	            throw new Error('setTimeout is not defined');
-	        };
+	        cachedSetTimeout = defaultSetTimout;
 	    }
 	    try {
-	        cachedClearTimeout = clearTimeout;
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
+	        }
 	    } catch (e) {
-	        cachedClearTimeout = function cachedClearTimeout() {
-	            throw new Error('clearTimeout is not defined');
-	        };
+	        cachedClearTimeout = defaultClearTimeout;
 	    }
 	})();
+	function runTimeout(fun) {
+	    if (cachedSetTimeout === setTimeout) {
+	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
+	        return setTimeout(fun, 0);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedSetTimeout(fun, 0);
+	    } catch (e) {
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+	            return cachedSetTimeout.call(null, fun, 0);
+	        } catch (e) {
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+	            return cachedSetTimeout.call(this, fun, 0);
+	        }
+	    }
+	}
+	function runClearTimeout(marker) {
+	    if (cachedClearTimeout === clearTimeout) {
+	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
+	        return clearTimeout(marker);
+	    }
+	    try {
+	        // when when somebody has screwed with setTimeout but no I.E. maddness
+	        return cachedClearTimeout(marker);
+	    } catch (e) {
+	        try {
+	            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+	            return cachedClearTimeout.call(null, marker);
+	        } catch (e) {
+	            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+	            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+	            return cachedClearTimeout.call(this, marker);
+	        }
+	    }
+	}
 	var queue = [];
 	var draining = false;
 	var currentQueue;
@@ -220,7 +276,7 @@
 	    if (draining) {
 	        return;
 	    }
-	    var timeout = cachedSetTimeout(cleanUpNextTick);
+	    var timeout = runTimeout(cleanUpNextTick);
 	    draining = true;
 
 	    var len = queue.length;
@@ -237,7 +293,7 @@
 	    }
 	    currentQueue = null;
 	    draining = false;
-	    cachedClearTimeout(timeout);
+	    runClearTimeout(timeout);
 	}
 
 	process.nextTick = function (fun) {
@@ -249,7 +305,7 @@
 	    }
 	    queue.push(new Item(fun, args));
 	    if (queue.length === 1 && !draining) {
-	        cachedSetTimeout(drainQueue, 0);
+	        runTimeout(drainQueue);
 	    }
 	};
 
@@ -20127,7 +20183,7 @@
 
 
 	// module
-	exports.push([module.id, ".itsa-progressline {\n  position: relative !important;\n  padding-top: 2em; }\n\n.itsa-progressline-line-checked.itsa-progressline-line-transparent {\n  opacity: 0.2 !important;\n  z-index: 1; }\n\n.itsa-progressline-line {\n  display: inline-block;\n  height: 0.2em;\n  background-color: #EEE; }\n\n.itsa-progressline-line-checked {\n  position: absolute;\n  z-index: 2;\n  height: 0.2em;\n  bottom: 0.25em;\n  overflow: hidden;\n  background-color: #0078E7; }\n\n.itsa-progressline-line-startgradient {\n  float: left;\n  height: 100%;\n  width: 5em;\n  background: -moz-linear-gradient(left, #EEE 0%, #0078E7 100%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(left, #EEE 0%, #0078E7 100%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to right, #EEE 0%, #0078E7 100%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$unchecked-color', endColorstr='$checked-color',GradientType=1 );\n  /* IE6-9 */ }\n\n.itsa-progressline-line-endgradient {\n  float: right;\n  height: 100%;\n  width: 5em;\n  background: -moz-linear-gradient(left, #0078E7 0%, #EEE 100%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(left, #0078E7 0%, #EEE 100%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to right, #0078E7 0%, #EEE 100%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$checked-color', endColorstr='$unchecked-color',GradientType=1 );\n  /* IE6-9 */ }\n\n.itsa-progressline-line-backwardsfill {\n  position: absolute;\n  z-index: 4;\n  background-color: #0078E7;\n  height: 100%;\n  width: 5em;\n  left: -5em;\n  margin-top: 0.4em; }\n\n.itsa-progressline-item {\n  bottom: 0;\n  display: inline-block;\n  position: absolute;\n  z-index: 3; }\n\n.itsa-progressline-marker {\n  position: absolute;\n  z-index: 3;\n  margin-left: -0.5em;\n  border-radius: 100%;\n  border: solid 0.2em #EEE;\n  background-color: #FFF;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n  height: 0.8em;\n  width: 0.8em;\n  bottom: 0; }\n\n.itsa-progressline-marker.itsa-progressline-checked {\n  background-color: #0078E7;\n  border-color: #0078E7; }\n  .itsa-progressline-marker.itsa-progressline-checked.itsa-progressline-checked-transparent {\n    border-color: #CCE4FB;\n    background-color: #CCE4FB; }\n\n.itsa-progressline-label {\n  margin-top: -2.15em;\n  margin-left: -50%;\n  width: 100%;\n  white-space: nowrap; }\n", ""]);
+	exports.push([module.id, ".itsa-progressline {\n  position: relative !important;\n  padding-top: 2em; }\n\n.itsa-progressline-line-checked.itsa-progressline-line-transparent {\n  opacity: 0.2 !important;\n  z-index: 1; }\n\n.itsa-progressline-line {\n  display: inline-block;\n  height: 0.2em;\n  background-color: #EEE;\n  vertical-align: -moz-middle-with-baseline; }\n\n.itsa-progressline-line-checked {\n  position: absolute;\n  z-index: 2;\n  height: 0.2em;\n  bottom: 0.25em;\n  overflow: hidden;\n  background-color: #0078E7; }\n\n.itsa-progressline-line-startgradient {\n  float: left;\n  height: 100%;\n  width: 5em;\n  background: -moz-linear-gradient(left, #EEE 0%, #0078E7 100%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(left, #EEE 0%, #0078E7 100%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to right, #EEE 0%, #0078E7 100%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$unchecked-color', endColorstr='$checked-color',GradientType=1 );\n  /* IE6-9 */ }\n\n.itsa-progressline-line-endgradient {\n  float: right;\n  height: 100%;\n  width: 5em;\n  background: -moz-linear-gradient(left, #0078E7 0%, #EEE 100%);\n  /* FF3.6-15 */\n  background: -webkit-linear-gradient(left, #0078E7 0%, #EEE 100%);\n  /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to right, #0078E7 0%, #EEE 100%);\n  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$checked-color', endColorstr='$unchecked-color',GradientType=1 );\n  /* IE6-9 */ }\n\n.itsa-progressline-line-backwardsfill {\n  position: absolute;\n  z-index: 4;\n  background-color: #0078E7;\n  height: 100%;\n  width: 5em;\n  left: -5em;\n  margin-top: 0.4em; }\n\n.itsa-progressline-item {\n  bottom: 0;\n  display: inline-block;\n  position: absolute;\n  z-index: 3; }\n\n.itsa-progressline-marker {\n  position: absolute;\n  z-index: 3;\n  margin-left: -0.5em;\n  border-radius: 100%;\n  border: solid 0.2em #EEE;\n  background-color: #FFF;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n  height: 0.8em;\n  width: 0.8em;\n  bottom: 0; }\n\n.itsa-progressline-marker.itsa-progressline-checked {\n  background-color: #0078E7;\n  border-color: #0078E7; }\n  .itsa-progressline-marker.itsa-progressline-checked.itsa-progressline-checked-transparent {\n    border-color: #CCE4FB;\n    background-color: #CCE4FB; }\n\n.itsa-progressline-label {\n  margin-top: -2.15em;\n  margin-left: -50%;\n  width: 100%;\n  white-space: nowrap; }\n", ""]);
 
 	// exports
 
@@ -20667,7 +20723,7 @@
 	            endGradient = React.createElement("div", { className: MAIN_CLASS__LINEPREFIX + 'endgradient' });
 	        }
 	        propsClassName && (className += " " + propsClassName);
-	        if (shadedPercent) {
+	        if (showShadedLine) {
 	            lineStyleCheckedShaded = { width: shadedPercent + "%" };
 	            if (shadedPercent < 100 && props.endGradient) {
 	                endGradientShaded = React.createElement("div", { className: MAIN_CLASS__LINEPREFIX + 'endgradient' });

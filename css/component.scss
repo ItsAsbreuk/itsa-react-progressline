@@ -18,6 +18,7 @@ $marker-color-trans: #CCE4FB;
     display: inline-block;
     height: 0.2em;
     background-color: $unchecked-color;
+    vertical-align: -moz-middle-with-baseline;
 }
 
 .itsa-progressline-line-checked {

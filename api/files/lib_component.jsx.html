@@ -296,7 +296,7 @@ const Component = React.createClass({
             endGradient = &lt;div className={MAIN_CLASS__LINEPREFIX+&#x27;endgradient&#x27;} /&gt;;
         }
         propsClassName &amp;&amp; (className+=&quot; &quot;+propsClassName);
-        if (shadedPercent) {
+        if (showShadedLine) {
             lineStyleCheckedShaded = {width: shadedPercent+&quot;%&quot;};
             if ((shadedPercent&lt;100) &amp;&amp; props.endGradient) {
                 endGradientShaded = &lt;div className={MAIN_CLASS__LINEPREFIX+&#x27;endgradient&#x27;} /&gt;;
