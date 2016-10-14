@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ItsAsbreuk/COMPONENT_NAME.svg?branch=master)](https://travis-ci.org/ItsAsbreuk/itsa-react-progressline)
+[![Build Status](https://travis-ci.org/ItsAsbreuk/itsa-react-progressline.svg?branch=master)](https://travis-ci.org/ItsAsbreuk/itsa-react-progressline)
 
 Progressline to simulate milestones.
 
