@@ -15,97 +15,19 @@
 */
 
 const React = require("react"),
-    PropTypes = React.PropTypes,
+    PropTypes = require("prop-types"),
     MAIN_CLASS = "itsa-progressline",
     MAIN_CLASS_PREFIX = MAIN_CLASS+"-",
     MAIN_CLASS_LINE = MAIN_CLASS_PREFIX+"line",
     MAIN_CLASS__LINEPREFIX = MAIN_CLASS_LINE+"-";
 
-const Component = React.createClass({
-
-    propTypes: {
-        /**
-         * The class that should be set on the element
-         *
-         * @property className
-         * @type String
-         * @since 0.0.1
-        */
-        className: PropTypes.string,
-
-        /**
-         * The percentage that progressline is filled.
-         *
-         * @property endMarker
-         * @type Boolean
-         * @default true
-         * @since 15.0.0
-        */
-        percent: PropTypes.number,
-
-        /**
-         * Whether the progressline should end with a gradient.
-         *
-         * @property endGradient
-         * @type Boolean
-         * @default true
-         * @since 15.0.0
-        */
-        endGradient: PropTypes.bool,
-
-        /**
-         * Whether an endMarker should be drawn.
-         *
-         * @property endMarker
-         * @type Boolean
-         * @default true
-         * @since 15.0.0
-        */
-        endMarker: PropTypes.bool,
-
-        /**
-         * The markers that are written along the progressline
-         *
-         * @property markers
-         * @type Array
-         * @since 15.0.0
-        */
-        markers: PropTypes.array.isRequired,
-
-        /**
-         * The percentage that a SECOND shaded progressline is filled,
-         * which should go further than `percent`.
-         * As from the `percent` the line will continue semi-transparent.
-         *
-         * @property shadedPercent
-         * @type Boolean
-         * @default true
-         * @since 15.0.0
-        */
-        shadedPercent: PropTypes.number,
-
-        /**
-         * Whether the progressline should start with a gradient.
-         * Only visible when `startMarker` is false.
-         *
-         * @property startGradient
-         * @type Boolean
-         * @default true
-         * @since 15.0.0
-        */
-        startGradient: PropTypes.bool,
-
-        /**
-         * Whether a startMarker should be drawn.
-         *
-         * @property startMarker
-         * @type Boolean
-         * @default false
-         * @since 15.0.0
-        */
-        startMarker: PropTypes.bool
-
-    },
+class Component extends React.Component {
+    constructor(props) {
+        super(props);
+        const instance = this;
+        instance.createLine = instance.createLine.bind(instance);
+        instance.createMarker = instance.createMarker.bind(instance);
+    }
 
     createLine(i, lineStyle) {
         return (
@@ -113,7 +35,7 @@ const Component = React.createClass({
                 key={i}
                 style={lineStyle} />
         );
-    },
+    }
 
     createMarker(iKey, iMarker, linePercent, percent, shadedPercent) {
         const checked = (linePercent<=percent),
@@ -136,24 +58,7 @@ const Component = React.createClass({
                 {backwardsFill}
             </div>
         );
-    },
-
-    /**
-     * Returns the default props.
-     *
-     * @method getDefaultProps
-     * @return Object
-     * @since 0.0.1
-     */
-    getDefaultProps() {
-        return {
-            endGradient: true,
-            endMarker: true,
-            percent: 0,
-            startGradient: true,
-            startMarker: false
-        };
-    },
+    }
 
     /**
      * React render-method --> renderes the Component.
@@ -235,7 +140,97 @@ const Component = React.createClass({
             </div>
         );
     }
+}
 
-});
+Component.propTypes = {
+    /**
+     * The class that should be set on the element
+     *
+     * @property className
+     * @type String
+     * @since 0.0.1
+    */
+    className: PropTypes.string,
+
+    /**
+     * The percentage that progressline is filled.
+     *
+     * @property endMarker
+     * @type Boolean
+     * @default true
+     * @since 15.0.0
+    */
+    percent: PropTypes.number,
+
+    /**
+     * Whether the progressline should end with a gradient.
+     *
+     * @property endGradient
+     * @type Boolean
+     * @default true
+     * @since 15.0.0
+    */
+    endGradient: PropTypes.bool,
+
+    /**
+     * Whether an endMarker should be drawn.
+     *
+     * @property endMarker
+     * @type Boolean
+     * @default true
+     * @since 15.0.0
+    */
+    endMarker: PropTypes.bool,
+
+    /**
+     * The markers that are written along the progressline
+     *
+     * @property markers
+     * @type Array
+     * @since 15.0.0
+    */
+    markers: PropTypes.array.isRequired,
+
+    /**
+     * The percentage that a SECOND shaded progressline is filled,
+     * which should go further than `percent`.
+     * As from the `percent` the line will continue semi-transparent.
+     *
+     * @property shadedPercent
+     * @type Boolean
+     * @default true
+     * @since 15.0.0
+    */
+    shadedPercent: PropTypes.number,
+
+    /**
+     * Whether the progressline should start with a gradient.
+     * Only visible when `startMarker` is false.
+     *
+     * @property startGradient
+     * @type Boolean
+     * @default true
+     * @since 15.0.0
+    */
+    startGradient: PropTypes.bool,
+
+    /**
+     * Whether a startMarker should be drawn.
+     *
+     * @property startMarker
+     * @type Boolean
+     * @default false
+     * @since 15.0.0
+    */
+    startMarker: PropTypes.bool
+};
+
+Component.defaultProps = {
+    endGradient: true,
+    endMarker: true,
+    percent: 0,
+    startGradient: true,
+    startMarker: false
+};
 
 module.exports = Component;

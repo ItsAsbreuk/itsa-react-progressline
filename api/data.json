@@ -55,7 +55,20 @@
     "classitems": [
         {
             "file": "lib/component.jsx",
-            "line": 27,
+            "line": 63,
+            "description": "React render-method --> renderes the Component.",
+            "itemtype": "method",
+            "name": "render",
+            "return": {
+                "description": "ReactComponent"
+            },
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 146,
             "description": "The class that should be set on the element",
             "itemtype": "property",
             "name": "className",
@@ -66,7 +79,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 36,
+            "line": 155,
             "description": "The percentage that progressline is filled.",
             "itemtype": "property",
             "name": "endMarker",
@@ -78,7 +91,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 46,
+            "line": 165,
             "description": "Whether the progressline should end with a gradient.",
             "itemtype": "property",
             "name": "endGradient",
@@ -90,7 +103,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 56,
+            "line": 175,
             "description": "Whether an endMarker should be drawn.",
             "itemtype": "property",
             "name": "endMarker",
@@ -102,7 +115,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 66,
+            "line": 185,
             "description": "The markers that are written along the progressline",
             "itemtype": "property",
             "name": "markers",
@@ -113,7 +126,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 75,
+            "line": 194,
             "description": "The percentage that a SECOND shaded progressline is filled,\nwhich should go further than `percent`.\nAs from the `percent` the line will continue semi-transparent.",
             "itemtype": "property",
             "name": "shadedPercent",
@@ -125,7 +138,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 87,
+            "line": 206,
             "description": "Whether the progressline should start with a gradient.\nOnly visible when `startMarker` is false.",
             "itemtype": "property",
             "name": "startGradient",
@@ -137,38 +150,12 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 98,
+            "line": 217,
             "description": "Whether a startMarker should be drawn.",
             "itemtype": "property",
             "name": "startMarker",
             "type": "Boolean",
             "default": "false",
-            "since": "15.0.0",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 141,
-            "description": "Returns the default props.",
-            "itemtype": "method",
-            "name": "getDefaultProps",
-            "return": {
-                "description": "Object"
-            },
-            "since": "0.0.1",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 158,
-            "description": "React render-method --> renderes the Component.",
-            "itemtype": "method",
-            "name": "render",
-            "return": {
-                "description": "ReactComponent"
-            },
             "since": "15.0.0",
             "class": "Component",
             "module": "component.jsx"

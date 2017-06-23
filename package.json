@@ -1,6 +1,6 @@
 {
     "name": "itsa-react-progressline",
-    "version": "15.0.11",
+    "version": "16.0.0",
     "description": "React Component: progressline with dedicated mark-points",
     "author": [
         {
@@ -24,15 +24,18 @@
     ],
     "main": "./lib/component.jsx",
     "engines": {
-        "node": "*"
+        "node": ">=5"
     },
     "directories": {
         "css": "./css",
         "lib": "./lib"
     },
+    "dependencies": {
+        "prop-types": "^15.5.10"
+    },
     "peerDependencies": {
-        "react": "^15.0.1",
-        "react-dom": "^15.0.1"
+        "react": ">=15",
+        "react-dom": ">=15"
     },
     "devDependencies": {
         "babel-core": "^6.7.6",
@@ -43,17 +46,17 @@
         "chai": "^3.5.0",
         "chai-equal-jsx": "^1.0.9",
         "css-loader": "^0.23.1",
-        "eslint": "^2.7.0",
-        "eslint-plugin-react": "^4.3.0",
+        "eslint": "^4.0.0",
+        "eslint-plugin-react": "^7.1.0",
         "istanbul": "^0.3.0",
         "jsdom": "^7.2.2",
         "jsdom-global": "^1.6.1",
         "jshint": "^2.5.5",
         "mocha": "^1.21.4",
-        "node-sass": "^3.4.2",
-        "react": "^15.0.1",
-        "react-dom": "^15.0.1",
+        "node-sass": "^4.5.3",
+        "react": "^15.6.1",
         "react-addons-test-utils": "^15.0.1",
+        "react-dom": "^15.6.1",
         "sass-loader": "^3.1.2",
         "style-loader": "^0.13.0",
         "webpack": "^1.12.2",
