@@ -34,20 +34,20 @@ $marker-color-trans: #CCE4FB;
     float: left;
     height: 100%;
     width: $gradient-width;
-    background: -moz-linear-gradient(left,  $unchecked-color 0%, $checked-color 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left,  $unchecked-color 0%, $checked-color 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right,  $unchecked-color 0%, $checked-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$unchecked-color', endColorstr='$checked-color',GradientType=1 ); /* IE6-9 */
+    background: -moz-linear-gradient(left, $unchecked-color 0%, $checked-color 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, $unchecked-color 0%, $checked-color 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, $unchecked-color 0%, $checked-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='$unchecked-color', endColorstr='$checked-color', GradientType=1); /* IE6-9 */
 }
 
 .itsa-progressline-line-endgradient {
     float: right;
     height: 100%;
     width: $gradient-width;
-    background: -moz-linear-gradient(left,  $checked-color 0%, $unchecked-color 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left,  $checked-color 0%, $unchecked-color 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right,  $checked-color 0%, $unchecked-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$checked-color', endColorstr='$unchecked-color',GradientType=1 ); /* IE6-9 */
+    background: -moz-linear-gradient(left, $checked-color 0%, $unchecked-color 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, $checked-color 0%, $unchecked-color 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, $checked-color 0%, $unchecked-color 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:dximagetransform.microsoft.gradient(startColorstr='$checked-color', endColorstr='$unchecked-color', GradientType=1); /* IE6-9 */
 }
 
 .itsa-progressline-line-backwardsfill {
